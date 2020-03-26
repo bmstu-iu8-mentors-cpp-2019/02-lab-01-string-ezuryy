@@ -61,21 +61,22 @@ TEST(String, Replace) {
 
 TEST(String, Size) {
   String s1("some");
+  String s2("");
 
   EXPECT_EQ(s1.Size(), 4);
-  EXPECT_TRUE(String{}.Empty());
+  EXPECT_TRUE(s2.Empty());
 
   EXPECT_FALSE(s1.Empty());
 }
 
 TEST(String, Mult) {
-  String s1("ABC");
-  s1 *= 2;
+    String s1("ABC");
+    s1 *= 2;
 
-  EXPECT_EQ(s1, String("ABCABCABC"));
+    EXPECT_EQ(s1, String("ABCABC"));
 
-  String s2 = s1 * 3;
-  EXPECT_EQ(s2, String("ABCABCABCABCABCABCABCABCABC"));
+    String s2 = s1 * 3;
+    EXPECT_EQ(s2, String("ABCABCABCABCABCABC"));
 }
 
 TEST(String, Trim) {
