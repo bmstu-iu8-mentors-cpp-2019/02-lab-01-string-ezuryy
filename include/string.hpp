@@ -1,4 +1,4 @@
-// Copyright 2018 Your Name <your_email>
+//Copyright 2020 Kidinova Daria daria.kidinova@gmail.com
 
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
@@ -108,7 +108,7 @@ public:
     /// <param name="symbol"> Значение символов, которе отрезаем </param>
     void LTrim(char symbol);
 
-    void swap(String &oth);
+    void Swap(String &oth);
 
     friend std::ostream &operator<<(std::ostream &, const String &);
 

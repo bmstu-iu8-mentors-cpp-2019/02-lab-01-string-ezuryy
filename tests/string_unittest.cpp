@@ -1,4 +1,4 @@
-// Copyright 2018 Your Name <your_email>
+//Copyright 2020 Kidinova Daria daria.kidinova@gmail.com
 
 #include <gtest/gtest.h>
 
@@ -98,7 +98,7 @@ TEST(String, Find) {
   EXPECT_EQ(4, s1.Find(" "));
   EXPECT_EQ(5, s1.Find("str"));
   EXPECT_EQ(0, s1.Find("some"));
-  
+
   EXPECT_EQ(9, String{"str stri string"}.Find(String{"string"}));
   EXPECT_EQ(6, String{"strinsstring"}.Find(String{"string"}));
 
@@ -116,12 +116,11 @@ TEST(String, Stream) {
 TEST(String, Swap) {
   String s0("some string");
   String s1("other string");
-  
 
   EXPECT_EQ("some string", s0);
   EXPECT_EQ("other string", s1);
 
-  s0.swap(s1);
+  s0.Swap(s1);
 
   EXPECT_EQ("other string", s0);
   EXPECT_EQ("some string", s1);

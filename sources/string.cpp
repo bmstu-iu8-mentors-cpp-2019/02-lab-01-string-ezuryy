@@ -1,6 +1,4 @@
-//
-// Created by ezury on 24.03.2020.
-//
+//Copyright 2020 Kidinova Daria daria.kidinova@gmail.com
 
 #include <cstring>
 #include <iostream>
@@ -54,7 +52,7 @@ String &String::operator*=(unsigned int m) {
     Len *= m;
     char *temp = new char[Len];
     for (unsigned int i = 0; i < m; ++i) {
-        strcat(temp, Data);
+        snprintf(temp, Len, "%s", Data);
     }
     Data = new char[Len];
     std::copy(temp, temp + strlen(temp), Data);
@@ -160,7 +158,8 @@ void String::RTrim(char symbol) {
 void String::LTrim(char symbol) {
     auto iter = Data;
     while (*iter == symbol && iter < Data + Len) {
-        for (auto prev = Data, next = Data + 1; next < Data + Len; ++prev, ++next) {
+        for (auto prev = Data, next = Data + 1;
+        next < Data + Len; ++prev, ++next) {
             *prev = *next;
         }
         auto last = Data + Len - 1;
@@ -169,7 +168,7 @@ void String::LTrim(char symbol) {
     }
 }
 
-void String::swap(String &oth) {
+void String::Swap(String &oth) {
     char *temp = new char[oth.Len];
     std::copy(oth.Data, oth.Data + oth.Len, temp);
     delete[] oth.Data;
