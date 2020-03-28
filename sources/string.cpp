@@ -21,7 +21,7 @@ String::String(const char *data) {
     if (data != nullptr) {
         Len = 0;
         for (; data[Len] != '\0'; ++Len) {}
-        Data = new char[Len];
+        Data = new char(Len);
         std::copy(data, data + Len, Data);
     }
 }
@@ -54,7 +54,6 @@ String &String::operator+=(const String &rhs) {
 String &String::operator*=(unsigned int m) {
     String temp(*this);
     Len = 0;
-    delete Data;
     Data = new char();
     for (unsigned int i = 0; i < m; ++i) {
         *this += temp;
