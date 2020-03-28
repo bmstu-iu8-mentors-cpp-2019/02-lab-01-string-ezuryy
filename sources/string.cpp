@@ -21,7 +21,7 @@ String::String(const char *data) {
     if (data != nullptr) {
         Len = 0;
         for (; data[Len] != '\0'; ++Len) {}
-        Data = new char(Len);
+        Data = new char[Len];
         std::copy(data, data + Len, Data);
     }
 }
