@@ -1,7 +1,6 @@
 //Copyright 2020 Kidinova Daria daria.kidinova@gmail.com
 
 #include <cstring>
-#include <iostream>
 #include "string.hpp"
 
 String::~String() {
@@ -40,8 +39,7 @@ String &String::operator=(const String &rhs) {
 String &String::operator+=(const String &rhs) {
     Len += rhs.Len;
     char *temp = new char[Len];
-    std::copy(Data, Data + strlen(Data), temp);
-    strcat(temp, rhs.Data);
+    sprintf(temp, "%s%s", Data, rhs.Data);
     Data = new char[Len];
     std::copy(temp, temp + strlen(temp), Data);
     delete[] temp;
@@ -50,9 +48,10 @@ String &String::operator+=(const String &rhs) {
 
 String &String::operator*=(unsigned int m) {
     Len *= m;
+    char *mult = Data;
     char *temp = new char[Len];
     for (unsigned int i = 0; i < m; ++i) {
-        strcat(temp, Data);
+        sprintf(temp, "%s%s", temp, mult);
     }
     Data = new char[Len];
     std::copy(temp, temp + strlen(temp), Data);
@@ -150,7 +149,7 @@ void String::LTrim(char symbol) {
     auto iter = Data;
     while (*iter == symbol && iter < Data + Len) {
         for (auto prev = Data, next = Data + 1;
-        next < Data + Len; ++prev, ++next) {
+             next < Data + Len; ++prev, ++next) {
             *prev = *next;
         }
         auto last = Data + Len - 1;

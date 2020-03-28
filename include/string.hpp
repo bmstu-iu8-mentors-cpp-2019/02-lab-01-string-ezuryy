@@ -3,7 +3,6 @@
 #ifndef INCLUDE_STRING_HPP_
 #define INCLUDE_STRING_HPP_
 
-//#include <cstddef>
 #include <iostream>
 
 class String {
