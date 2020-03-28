@@ -39,7 +39,7 @@ String &String::operator=(const String &rhs) {
 String &String::operator+=(const String &rhs) {
     Len += rhs.Len;
     char *temp = new char[Len];
-    snprintf(temp, Len + 1,"%s%s", Data, rhs.Data);
+    snprintf(temp, Len + 1, "%s%s", Data, rhs.Data);
     Data = new char[Len];
     std::copy(temp, temp + strlen(temp), Data);
     delete[] temp;
