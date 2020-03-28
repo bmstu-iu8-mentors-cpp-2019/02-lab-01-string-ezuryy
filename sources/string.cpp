@@ -47,15 +47,12 @@ String &String::operator+=(const String &rhs) {
 }
 
 String &String::operator*=(unsigned int m) {
-    Len *= m;
-    char *mult = Data;
-    char *temp = new char[Len];
+    String temp(Data);
+    Len = 0;
+    Data = new char();
     for (unsigned int i = 0; i < m; ++i) {
-        sprintf(temp, "%s%s", temp, mult);
+        *this += temp;
     }
-    Data = new char[Len];
-    std::copy(temp, temp + strlen(temp), Data);
-    delete[] temp;
     return *this;
 }
 
