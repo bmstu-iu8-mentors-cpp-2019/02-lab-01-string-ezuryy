@@ -12,7 +12,7 @@ String::String() : Data(nullptr), Len(-1) {}
 String::String(const String &rhs) {
     Len = rhs.Len;
     if (rhs.Data != nullptr) {
-        Data = new char[strlen(rhs.Data) + 1];
+        Data = new char[Len];
         std::copy(rhs.Data, rhs.Data + strlen(rhs.Data), Data);
     }
 }
@@ -20,7 +20,7 @@ String::String(const String &rhs) {
 String::String(const char *data) {
     Len = strlen(data);
     if (data != nullptr) {
-        Data = new char[strlen(data) + 1];
+        Data = new char[Len];
         std::copy(data, data + strlen(data), Data);
     }
 }
