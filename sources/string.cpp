@@ -19,7 +19,7 @@ String::String(const String &rhs) {
 
 String::String(const char *data) {
     Len = 0;
-    for(auto iter = data; *iter != '\0'; ++iter, ++Len) {}
+    for (auto iter = data; *iter != '\0'; ++iter, ++Len) {}
     if (data != nullptr) {
         Data = new char[Len];
         std::copy(data, data + Len, Data);
