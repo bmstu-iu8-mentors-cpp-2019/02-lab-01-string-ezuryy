@@ -21,7 +21,7 @@ String::String(const char *data) {
     Len = strlen(data);
     if (data != nullptr) {
         Data = new char[Len];
-        std::copy(data, data + strlen(data), Data);
+        std::copy(data, data + Len, Data);
     }
 }
 
@@ -37,9 +37,13 @@ String &String::operator=(const String &rhs) {
 }
 
 String &String::operator+=(const String &rhs) {
+    char *temp = new char[Len + rhs.Len];
+    std::copy(Data, Data + Len, temp);
+    int temp_len = Len;
+    for (int i = 0; i < rhs.Len; ++i) {
+        *(temp + temp_len + i) = *(rhs.Data + i);
+    }
     Len += rhs.Len;
-    char *temp = new char[Len];
-    snprintf(temp, Len + 1, "%s%s", Data, rhs.Data);
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
     delete[] temp;
@@ -61,7 +65,7 @@ bool String::operator==(const String &rhs) const {
         return false;
     } else {
         for (auto it1 = Data, it2 = rhs.Data;
-        it1 < Data + Len && it2 < rhs.Data + rhs.Len; ++it1, ++it2) {
+             it1 < Data + Len && it2 < rhs.Data + rhs.Len; ++it1, ++it2) {
             if (*it1 != *it2) {
                 return false;
             }
