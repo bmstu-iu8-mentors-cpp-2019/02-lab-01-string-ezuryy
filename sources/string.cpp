@@ -85,10 +85,10 @@ bool String::operator<(const String &rhs) const {
 
 int String::Find(const String &substr) const {
     int i = 0, answ = -1;
-    for (auto it = Data; it <= Data + Len; ++i, ++it) {
+    for (auto it = Data; it < Data + Len; ++i, ++it) {
         answ = i;
         auto it_sub = substr.Data;
-        for (; it_sub < substr.Data + substr.Len && it <= Data + Len;
+        for (; it_sub < substr.Data + substr.Len && it < Data + Len;
                ++i, ++it, ++it_sub) {
             if (*it_sub == *it) {
                 continue;
