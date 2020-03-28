@@ -13,7 +13,7 @@ String::String(const String &rhs) {
     Len = rhs.Len;
     if (rhs.Data != nullptr) {
         Data = new char[Len];
-        std::copy(rhs.Data, rhs.Data + strlen(rhs.Data), Data);
+        std::copy(rhs.Data, rhs.Data + Len, Data);
     }
 }
 
@@ -29,8 +29,8 @@ String &String::operator=(const String &rhs) {
     if (&rhs != this) {
         Len = rhs.Len;
         if (rhs.Data != nullptr) {
-            Data = new char[strlen(rhs.Data) + 1];
-            std::copy(rhs.Data, rhs.Data + strlen(rhs.Data), Data);
+            Data = new char[Len];
+            std::copy(rhs.Data, rhs.Data + Len, Data);
         }
     }
     return *this;
@@ -41,7 +41,7 @@ String &String::operator+=(const String &rhs) {
     char *temp = new char[Len];
     snprintf(temp, Len + 1, "%s%s", Data, rhs.Data);
     Data = new char[Len];
-    std::copy(temp, temp + strlen(temp), Data);
+    std::copy(temp, temp + Len, Data);
     delete[] temp;
     return *this;
 }
@@ -110,7 +110,7 @@ size_t String::Size() const {
 }
 
 bool String::Empty() const {
-    return Len == 0 && strlen(Data) == 0;
+    return Len == 0;
 }
 
 char String::operator[](size_t index) const {
