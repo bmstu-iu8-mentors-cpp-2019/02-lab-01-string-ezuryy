@@ -88,7 +88,7 @@ int String::Find(const String &substr) const {
     for (int it = 0; it <= Len; ++i, ++it) {
         answ = i;
         int i_sub = 0;
-        for (; i_sub < substr.Len; ++i, ++it, ++i_sub) {
+        for (; i_sub < substr.Len && it <= Len; ++i, ++it, ++i_sub) {
             if (substr[i_sub] == *(Data + it)) {
                 continue;
             } else {
