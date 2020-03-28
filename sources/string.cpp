@@ -168,7 +168,7 @@ void String::LTrim(char symbol) {
     }
 }
 
-void String::swap(String &oth) {
+void String::Swap(String &oth) {
     char *temp = new char[oth.Len];
     int temp_len = oth.Len;
     std::copy(oth.Data, oth.Data + oth.Len, temp);

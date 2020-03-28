@@ -42,7 +42,7 @@ int main() {
     std::cout << "c.RTrim('!'); c = " << c << std::endl;
     c.LTrim('!');
     std::cout << "c.LTrim('!'); c = " << c << std::endl;
-    a2.swap(c);
+    a2.Swap(c);
     std::cout << "a2.swap(c); a2 = " << a2 << " ; c = " << c << std::endl;
     String d = a2 * 2;
     std::cout << "d = a2 * 2 = " << d << std::endl;
