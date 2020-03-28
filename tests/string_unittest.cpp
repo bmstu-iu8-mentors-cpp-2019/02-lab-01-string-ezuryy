@@ -120,7 +120,7 @@ TEST(String, Swap) {
     EXPECT_EQ(s0, String("some string"));
     EXPECT_EQ(s1, String("other string"));
 
-    s0.Swap(s1);
+    s0.swap(s1);
 
     EXPECT_EQ(s0, String("other string"));
     EXPECT_EQ(s1, String("some string"));

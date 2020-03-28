@@ -106,7 +106,7 @@ public:
     /// <param name="symbol"> Значение символов, которе отрезаем </param>
     void LTrim(char symbol);
 
-    void Swap(String &oth);
+    void swap(String &oth);
 
     friend std::ostream &operator<<(std::ostream &, const String &);
 

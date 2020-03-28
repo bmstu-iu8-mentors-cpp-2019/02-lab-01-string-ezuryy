@@ -45,7 +45,6 @@ String &String::operator+=(const String &rhs) {
         *(temp + temp_len + i) = *(rhs.Data + i);
     }
     Len += rhs.Len;
-    delete[] Data;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
     delete[] temp;
@@ -57,8 +56,9 @@ String &String::operator*=(unsigned int m) {
     Len = 0;
     Data = new char();
     for (unsigned int i = 0; i < m; ++i) {
-        *this += temp;
+         *this += temp;
     }
+    //delete temp;
     return *this;
 }
 
@@ -168,15 +168,15 @@ void String::LTrim(char symbol) {
     }
 }
 
-void String::Swap(String &oth) {
+void String::swap(String &oth) {
     char *temp = new char[oth.Len];
     int temp_len = oth.Len;
     std::copy(oth.Data, oth.Data + oth.Len, temp);
-    delete[] oth.Data;
+    //delete[] oth.Data;
     oth.Len = Len;
     oth.Data = new char[Len];
     std::copy(Data, Data + Len, oth.Data);
-    delete[] Data;
+    //delete[] Data;
     Len = temp_len;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
