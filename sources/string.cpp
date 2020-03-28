@@ -60,7 +60,13 @@ bool String::operator==(const String &rhs) const {
     if (Len != rhs.Len) {
         return false;
     } else {
-        return strcmp(Data, rhs.Data) == 0;
+        for (auto it1 = Data, it2 = rhs.Data;
+        it1 < Data + Len && it2 < rhs.Data + rhs.Len; ++it1, ++it2) {
+            if (*it1 != *it2) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
