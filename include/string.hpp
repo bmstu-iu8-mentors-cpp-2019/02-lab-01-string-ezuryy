@@ -21,7 +21,7 @@ public:
     /// Пользовательский конструктор
     /// <param name="data">Данные, которые требуется поместить в создаваемый
     /// объект </param>
-    String(const char *data);
+    explicit String(const char *data);
 
     /// Оператор присваивания
     /// <param name="data">Объект, который копируем </param>
@@ -42,7 +42,6 @@ public:
     /// <returns>Возвращаем значения равенства двух строк</returns>
     bool operator==(const String &rhs) const;
 
-    bool operator==(const char* &rhs) const;
     /// Оператор &lt;
     /// <param name="rhs">Объект, который стоит после знака "&lt;" </param>
     /// <returns>Возвращаем значения сравнения двух строк</returns>

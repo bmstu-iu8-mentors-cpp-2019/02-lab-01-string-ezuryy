@@ -52,7 +52,7 @@ String &String::operator*=(unsigned int m) {
     Len *= m;
     char *temp = new char[Len];
     for (unsigned int i = 0; i < m; ++i) {
-        snprintf(temp, Len, "%s", Data);
+        strcat(temp, Data);
     }
     Data = new char[Len];
     std::copy(temp, temp + strlen(temp), Data);
@@ -65,15 +65,6 @@ bool String::operator==(const String &rhs) const {
         return false;
     } else {
         return strcmp(Data, rhs.Data) == 0;
-    }
-}
-
-bool String::operator==(const char *&rhs) const {
-    int rhs_len = static_cast<int>(strlen(rhs));
-    if (Len != rhs_len) {
-        return false;
-    } else {
-        return strcmp(Data, rhs) == 0;
     }
 }
 
