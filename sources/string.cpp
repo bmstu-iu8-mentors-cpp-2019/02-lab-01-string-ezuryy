@@ -85,11 +85,11 @@ bool String::operator<(const String &rhs) const {
 
 int String::Find(const String &substr) const {
     int i = 0, answ = -1;
-    for (auto it = Data; it <= Data + Len; ++i, ++it) {
+    for (int it = 0; it <= Len; ++i, ++it) {
         answ = i;
         int i_sub = 0;
         for (; i_sub < substr.Len; ++i, ++it, ++i_sub) {
-            if (substr[i_sub] == *it) {
+            if (substr[i_sub] == *(Data + it)) {
                 continue;
             } else {
                 if (i_sub != 0) {
