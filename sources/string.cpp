@@ -45,7 +45,6 @@ String &String::operator+=(const String &rhs) {
         *(temp + temp_len + i) = *(rhs.Data + i);
     }
     Len += rhs.Len;
-    delete Data;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
     delete[] temp;
@@ -55,7 +54,7 @@ String &String::operator+=(const String &rhs) {
 String &String::operator*=(unsigned int m) {
     String temp(*this);
     Len = 0;
-    delete Data;
+    delete[] Data;
     Data = new char();
     for (unsigned int i = 0; i < m; ++i) {
          *this += temp;
@@ -109,7 +108,7 @@ int String::Find(const String &substr) const {
             answ = -1;
         }
     }
-    return -1;
+    return answ;
 }
 
 void String::Replace(char oldSymbol, char newSymbol) {
