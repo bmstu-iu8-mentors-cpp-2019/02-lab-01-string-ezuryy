@@ -45,6 +45,7 @@ String &String::operator+=(const String &rhs) {
         *(temp + temp_len + i) = *(rhs.Data + i);
     }
     Len += rhs.Len;
+    delete[] Data;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
     delete[] temp;
