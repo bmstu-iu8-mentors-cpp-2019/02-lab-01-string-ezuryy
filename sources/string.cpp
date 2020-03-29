@@ -45,9 +45,7 @@ String &String::operator+=(const String &rhs) {
     for (int i = 0; i < rhs.Len; ++i) {
         *(temp + temp_len + i) = *(rhs.Data + i);
     }
-    //if (Data != nullptr) {
     delete[] Data;
-    //}
     Len += rhs.Len;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
@@ -207,10 +205,6 @@ bool operator>(const String &a, const String &b) {
     return a < b || a == b ? false : true;
 }
 
-/// Оператор вывода
-/// <param name="out">Поток куда выводим строку </param>
-/// <param name="str">Строка, которую выводим </param>
-/// <returns>Возвращаем ссылку на поток</returns>
 std::ostream &operator<<(std::ostream &out, const String &str) {
     for (auto iter = str.Data; iter != str.Data + str.Len; ++iter) {
         out << *iter;

@@ -19,7 +19,6 @@ HunterGate(
 )
 
 
-# TODO: rename project and delete this comment
 project(string)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
