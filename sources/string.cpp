@@ -30,6 +30,7 @@ String &String::operator=(const String &rhs) {
     if (&rhs != this) {
         Len = rhs.Len;
         if (rhs.Data != nullptr) {
+            delete[] Data;
             Data = new char[Len];
             std::copy(rhs.Data, rhs.Data + Len, Data);
         }
@@ -44,8 +45,10 @@ String &String::operator+=(const String &rhs) {
     for (int i = 0; i < rhs.Len; ++i) {
         *(temp + temp_len + i) = *(rhs.Data + i);
     }
-    Len += rhs.Len;
+    //if (Data != nullptr) {
     delete[] Data;
+    //}
+    Len += rhs.Len;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
     delete[] temp;
@@ -56,11 +59,10 @@ String &String::operator*=(unsigned int m) {
     String temp(*this);
     Len = 0;
     delete[] Data;
-    Data = new char();
+    Data = new char[0];
     for (unsigned int i = 0; i < m; ++i) {
-         *this += temp;
+        *this += temp;
     }
-    //delete temp;
     return *this;
 }
 
@@ -174,11 +176,11 @@ void String::Swap(String &oth) {
     char *temp = new char[oth.Len];
     int temp_len = oth.Len;
     std::copy(oth.Data, oth.Data + oth.Len, temp);
-    //delete[] oth.Data;
+    delete[] oth.Data;
     oth.Len = Len;
     oth.Data = new char[Len];
     std::copy(Data, Data + Len, oth.Data);
-    //delete[] Data;
+    delete[] Data;
     Len = temp_len;
     Data = new char[Len];
     std::copy(temp, temp + Len, Data);
@@ -192,7 +194,7 @@ String operator+(const String &a, const String &b) {
 }
 
 String operator*(const String &a, unsigned int b) {
-    String c(a);
+    String c = a;
     c *= b;
     return c;
 }
@@ -202,7 +204,7 @@ bool operator!=(const String &a, const String &b) {
 }
 
 bool operator>(const String &a, const String &b) {
-    return a < b ? false : true;
+    return a < b || a == b ? false : true;
 }
 
 /// Оператор вывода
